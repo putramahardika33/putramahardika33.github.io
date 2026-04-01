@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Profil Saya</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* style menu jadi kotak */
+      body {
+        background-color: #000;
+      }
+      .nav-pills .nav-link {
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background: #e9ecef; /* warna awal */
+        color: #000000;
+        transition: 0.3s;
+        width: 70%;
+      }
+
+      /* saat hover */
+      .nav-pills .nav-link:hover {
+        background: #0d6efd;
+        color: white;
+      }
+
+      /* saat aktif (diklik) */
+      .nav-pills .nav-link.active {
+        background: #0d6efd;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* biar lebih rapi */
+      .nav-pills {
+        gap: 5px;
+      }
+      .card {
+        background-color: #1e1e1e;
+        color: white;
+        border: none;
+        transition: 0.3s;
+      }
+
+      #pendidikan .card img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card:hover {
+        transform: scale(1.03);
+      }
+
+      .border-end {
+        border-color: #444 !important;
+      }
+      #organisasi {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        border-radius: 15px;
+        padding: 20px;
+        min-height: 100vh;
+      }
+      #organisasi .card:hover {
+        transform: scale(1.03);
+        transition: 0.3s;
+      }
+      #prestasi {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 30px;
+        border-radius: 0;
+      }
+      #kemampuan {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      .skill-card {
+        background: #0c0b0b;
+        border-radius: 15px;
+        padding: 20px;
+        color: #fcf0f0;
+        height: 100%;
+      }
+
+      .skill-desc {
+        background: #000000;
+        border-radius: 15px;
+        padding: 20px;
+        color: #ffffff;
+        margin-top: 20px;
+      }
+      #kontak {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      .kontak-card {
+        background: #000000;
+        border-radius: 15px;
+        padding: 25px;
+        color: #ffffff;
+        max-width: 400px;
+      }
+      #portofolio {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      .table-custom {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      #tentang {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      #pendidikan {
+        background: linear-gradient(135deg, #1a74e2, #27104f);
+        min-height: 100vh;
+        padding: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- MENU KIRI -->
+        <div class="col-3 border-end vh-100 p-3">
+          <h5 class="text-primary">Menu</h5>
+
+          <div
+            class="nav flex-column nav-pills"
+            id="v-pills-tab"
+            role="tablist"
+          >
+            <button
+              class="nav-link active"
+              data-bs-toggle="pill"
+              data-bs-target="#tentang"
+            >
+              Tentang
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#pendidikan"
+            >
+              Pendidikan
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#organisasi"
+            >
+              Pengalaman Organisasi
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#prestasi"
+            >
+              Prestasi
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#kemampuan"
+            >
+              Kemampuan
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#kontak"
+            >
+              Kontak
+            </button>
+
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#portofolio"
+            >
+              portofolio
+            </button>
+          </div>
+        </div>
+
+        <!-- KONTEN KANAN -->
+        <div class="col-9 p-4">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="tentang">
+              <div class="card p-3">
+                <!-- FOTO FULL AUTO SLIDE -->
+                <div
+                  id="carouselExample"
+                  class="carousel slide mb-3"
+                  data-bs-ride="carousel"
+                  data-bs-interval="3000"
+                  data-bs-pause="hover"
+                >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img
+                        src="img/foto1.JPG"
+                        class="d-block mx-auto rounded-circle"
+                        style="width: 200px; height: 200px; object-fit: cover"
+                      />
+                    </div>
+
+                    <div class="carousel-item">
+                      <img
+                        src="img/foto2.png"
+                        class="d-block mx-auto rounded-circle"
+                        style="width: 200px; height: 200px; object-fit: cover"
+                      />
+                    </div>
+
+                    <div class="carousel-item">
+                      <img
+                        src="img/foto3.png"
+                        class="d-block mx-auto rounded-circle"
+                        style="width: 200px; height: 200px; object-fit: cover"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- TOMBOL KIRI -->
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="prev"
+                  >
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+
+                  <!-- TOMBOL KANAN -->
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="next"
+                  >
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+
+                <!-- TEKS -->
+                <div class="mt-3 text-justify">
+                  <h3 class="text-center">
+                    Tentang Saya <br />
+                    Gerend Putra Mahardika
+                  </h3>
+
+                  <p>
+                    Nama Saya Gerend Putra Mahardika,Saya adalah seorang pelajar
+                    di bidang Rekayasa Perangkat Lunak (RPL) yang memiliki minat
+                    besar dalam dunia teknologi, khususnya pengembangan website.
+                  </p>
+
+                  <p>
+                    Saat ini saya sedang mempelajari berbagai dasar pemrograman
+                    seperti HTML, CSS, dan Bootstrap untuk membuat tampilan
+                    website yang menarik dan responsif. Saya juga mulai belajar
+                    PHP untuk memahami bagaimana membangun website yang dinamis.
+                  </p>
+
+                  <p>
+                    Saya dikenal sebagai pribadi yang mudah tersenyum, humoris,
+                    dan mampu menciptakan suasana yang menyenangkan saat bekerja
+                    dalam tim.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PENDIDIKAN (SUDAH DIPERBAIKI) -->
+            <div class="tab-pane fade" id="pendidikan">
+              <h3 class="mb-3 text-white">Pendidikan</h3>
+
+              <div class="row g-3">
+                <!-- SMK -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/smk.jpg" class="card-img-top" alt="SMK" />
+                    <div class="card-body">
+                      <h5 class="card-title">SMK</h5>
+                      <p class="card-text">
+                        SMK Negri 1 Bawang (RPL)<br />
+                        2025 - Sekarang
+                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/yPAntuyPPWT6HMjA7"
+                        target="_blank"
+                        class="btn btn-primary w-100 mt-2"
+                      >
+                        📍 Lihat Lokasi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SMP -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/smp.jpg" class="card-img-top" alt="SMP" />
+                    <div class="card-body">
+                      <h5 class="card-title">SMP</h5>
+                      <p class="card-text">
+                        SMP Negeri 5 Banjarnegara<br />
+                        2022 - 2025
+                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/Hgr1MaMTEsjvBYXh8"
+                        target="_blank"
+                        class="btn btn-success w-100 mt-2"
+                      >
+                        📍 Lihat Lokasi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SD -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/sd.jpg" class="card-img-top" alt="SD" />
+                    <div class="card-body">
+                      <h5 class="card-title">SD</h5>
+                      <p class="card-text">
+                        SD Negeri 1 Singamerta<br />
+                        2016 - 2022
+                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/zFpH3vgwzF1Jiwh37"
+                        target="_blank"
+                        class="btn btn-warning w-100 mt-2"
+                      >
+                        📍 Lihat Lokasi
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="organisasi">
+              <div class="row justify-content-center g-4">
+                <!-- CARD OSIS -->
+                <div class="col-md-5">
+                  <div class="card text-center p-4 shadow-lg h-100">
+                    <img
+                      src="img/osis.png"
+                      style="width: 70px; margin: auto"
+                      class="mb-3"
+                    />
+
+                    <h5 class="fw-bold">OSIS SMPN 5 Banjarnegara</h5>
+
+                    <p style="color: #ddd">
+                      Saya merupakan siswa yang aktif berorganisasi sejak SMP
+                      melalui OSIS, yang memberikan banyak pengalaman dalam
+                      kerja sama tim, tanggung jawab, dan kepemimpinan.
+                    </p>
+
+                    <p style="color: #ddd">
+                      Dalam Seksi Bidang Ketertiban, saya berperan dalam menjaga
+                      kedisiplinan dan ketertiban siswa di lingkungan sekolah.
+                    </p>
+
+                    <small style="color: #aaa">
+                      Masa Bakti <br />
+                      2022/2023 - 2023/2024
+                    </small>
+                  </div>
+                </div>
+
+                <!-- CARD PRAMUKA -->
+                <div class="col-md-5">
+                  <div class="card text-center p-4 shadow-lg h-100">
+                    <img
+                      src="img/pramuka.png"
+                      style="width: 70px; margin: auto"
+                      class="mb-3"
+                    />
+
+                    <h5 class="fw-bold">Pramuka Garuda</h5>
+
+                    <p style="color: #ddd">
+                      Saya juga aktif dalam kegiatan Pramuka dan mencapai
+                      tingkat Pramuka Garuda, yang melatih saya menjadi pribadi
+                      disiplin dan mandiri.
+                    </p>
+
+                    <p style="color: #ddd">
+                      Kegiatan meliputi kerja sama tim, kepemimpinan, dan
+                      kegiatan sosial.
+                    </p>
+
+                    <small style="color: #aaa"> Tingkat: Pramuka Garuda </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="prestasi">
+              <div
+                class="d-flex justify-content-center align-items-center"
+                style="min-height: 80vh"
+              >
+                <div
+                  class="card text-center p-4 shadow-lg"
+                  style="max-width: 500px; border-radius: 15px"
+                >
+                  <!-- JUDUL -->
+                  <h3 class="text-center mb-3">Prestasi</h3>
+
+                  <!-- ISI -->
+                  <p style="color: #ddd">
+                    Saat ini saya masih dalam proses mengembangkan diri dan
+                    terus belajar untuk meraih berbagai prestasi di bidang
+                    akademik maupun non-akademik.
+                  </p>
+
+                  <!-- NOTE -->
+                  <div
+                    class="mt-3 p-3"
+                    style="background: #2a2a2a; border-radius: 10px"
+                  >
+                    <b>Note:</b><br />
+                    Saya sedang berusaha dan terus berkembang agar dapat meraih
+                    prestasi yang membanggakan di masa depan.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="kemampuan">
+              <h2 class="text-center text-white mb-4">Kemampuan</h2>
+
+              <div class="row justify-content-center g-4">
+                <!-- HARD SKILL -->
+                <div class="col-md-4">
+                  <div class="skill-card">
+                    <h5>Hard Skill</h5>
+                    <ul>
+                      <li>Desain grafis menggunakan Canva dan Figma</li>
+                      <li>Dasar Pemrograman (HTML dan CSS)</li>
+                      <li>Pembuatan dan pengelolaan konten visual</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- SOFT SKILL -->
+                <div class="col-md-4">
+                  <div class="skill-card">
+                    <h5>Soft Skill</h5>
+                    <ul>
+                      <li>Komunikasi yang baik</li>
+                      <li>Kerja sama tim</li>
+                      <li>Disiplin dan tanggung jawab</li>
+                      <li>Manajemen waktu</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- DESKRIPSI -->
+                <div class="col-md-8">
+                  <div class="skill-desc text-center">
+                    Saya memiliki kemampuan dasar dalam desain grafis
+                    menggunakan Canva dan Figma untuk membuat konten visual
+                    sederhana. Selain itu, saya memahami dasar pemrograman HTML
+                    dan CSS untuk membuat tampilan website.
+
+                    <br /><br />
+
+                    Saya juga mampu berkomunikasi dengan baik, bekerja sama
+                    dalam tim, serta memiliki sikap disiplin dan tanggung jawab
+                    dalam menyelesaikan tugas.
+
+                    <br /><br />
+
+                    Saat ini, saya terus belajar dan mengembangkan kemampuan
+                    agar menjadi lebih baik ke depannya.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="kontak">
+              <h2 class="text-center text-white mb-4">Kontak</h2>
+
+              <div
+                class="d-flex justify-content-center align-items-center"
+                style="min-height: 80vh"
+              >
+                <div class="kontak-card text-center shadow-lg">
+                  <h5 class="mb-3">Hubungi Saya</h5>
+
+                  <p>
+                    <b>Email:</b><br />
+                    <a href="mailto:gerendputramahardika@email.com"
+                      >gerendputamahardika@email.com</a
+                    >
+                  </p>
+
+                  <p>
+                    <b>Instagram:</b><br />
+                    <a
+                      href="https://www.instagram.com/gerndptra_?igsh=cnJxbzNlbG93cjAw"
+                      target="_blank"
+                      >@gerndptra_</a
+                    >
+                  </p>
+
+                  <p>
+                    <b>Gidhub:</b><br />
+                    <a
+                      href="https://github.com/putramahardika33"
+                      target="_blank"
+                      >putramahardika33</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="portofolio">
+              <h2 class="text-center text-white mb-4">Portofolio</h2>
+
+              <div class="row g-3 m-0">
+                <!-- SMK -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/karya1.png" class="card-img-top" alt="SMK" />
+                    <div class="card-body">
+                      <h5 class="card-title">UI/UX</h5>
+                      <p class="card-text">
+                        Web Minimalis Hitam dan Merah… <br />
+                        , UI-nya pakai konsep minimalis hitam-merah, ada menu
+                        kategori, pencarian, dan daftar produk. UX-nya terlihat
+                        sederhana karena ada fitur pencarian, pesanan terkini,
+                        dan profil, sehingga pengguna lebih mudah bernavigasi.
+                      </p>
+                      <a
+                        href="https://drive.google.com/file/d/1-cG3S_jNG4GPf_vFHkvWVz1n_IE8QC_0/preview"
+                        target="_blank"
+                        class="btn btn-primary w-100 mt-2"
+                      >
+                        LIhat
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SMP -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/karya2.png" class="card-img-top" alt="SMP" />
+                    <div class="card-body">
+                      <h5 class="card-title">UI/UX</h5>
+                      <p class="card-text">
+                        Gambar ini nunjukin beberapa tampilan halaman website
+                        Shopee di layar komputer. Ada empat bagian screenshot
+                        yang digabung jadi satu.
+                        <br />
+                      </p>
+                      <a
+                        href="https://drive.google.com/file/d/1gPz7aSOAX5LfGDTIQ2or_S62D0NYeW4o/preview"
+                        target="_blank"
+                        class="btn btn-success w-100 mt-2"
+                      >
+                        Lihat
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SD -->
+                <div class="col-md-4">
+                  <div class="card h-100">
+                    <img src="img/karya3.png" class="card-img-top" alt="SD" />
+                    <div class="card-body">
+                      <h5 class="card-title">Logo</h5>
+                      <p class="card-text">
+                        Gambar ini adalah logo dengan tulisan besar “KS” di
+                        bagian atas. Warna hurufnya coklat tua, senada sama
+                        warna cemilan tradisional. Di dalam huruf S ada gambar
+                        tekstur salak yang kelihatan khas banget, kayak kulit
+                        salak yang bersisik. Jadi langsung nunjukin kalau
+                        produknya berhubungan sama salak.<br />
+                      </p>
+                      <a
+                        href="https://drive.google.com/file/d/1a2fNOJwG9k_a-d45NbwQf6FiZoCG0igD/preview"
+                        target="_blank"
+                        class="btn btn-warning w-100 mt-2"
+                      >
+                        Lihat
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
