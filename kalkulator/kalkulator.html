@@ -2,25 +2,30 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Kalkulator Warna Cerah</title>
+<title>Kalkulator + History</title>
 
 <style>
 body {
     font-family: Arial;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, #0f9b0f, #00c853);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* box kalkulator */
+/* container */
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* kalkulator */
 .kalkulator {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+    background: #1b5e20;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 /* layar */
@@ -33,17 +38,15 @@ body {
     border: none;
     border-radius: 10px;
     margin-bottom: 15px;
-    background: #fff;
 }
 
-/* grid tombol */
+/* tombol */
 .tombol {
     display: grid;
     grid-template-columns: repeat(4, 65px);
     gap: 10px;
 }
 
-/* tombol umum */
 button {
     height: 55px;
     font-size: 18px;
@@ -57,63 +60,76 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* warna tombol */
-.angka {
-    background: rgba(255,255,255,0.8);
+/* warna */
+.angka { background: #2e7d32; color: white; }
+.operator { background: #66bb6a; }
+.equal { background: #00e676; grid-column: span 2; }
+.clear { background: #ff1744; color: white; }
+.del { background: #37474f; color: white; }
+
+/* history */
+.history {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 15px;
+    width: 200px;
+    color: white;
+    overflow-y: auto;
+    max-height: 350px;
 }
 
-.operator {
-    background: #ff9800;
-    color: white;
+.history h3 {
+    margin-top: 0;
 }
 
-.equal {
-    background: #00e676;
-    color: white;
-    grid-column: span 2;
-}
-
-.clear {
-    background: #ff1744;
-    color: white;
-}
-
-.del {
-    background: #607d8b;
-    color: white;
+.history p {
+    margin: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="kalkulator">
-    <input type="text" id="layar" readonly>
+<div class="container">
 
-    <div class="tombol">
-        <button class="clear" onclick="clearLayar()">C</button>
-        <button class="del" onclick="hapusSatu()">DEL</button>
-        <button class="operator" onclick="inputAngka('/')">÷</button>
-        <button class="operator" onclick="inputAngka('*')">×</button>
+    <!-- Kalkulator -->
+    <div class="kalkulator">
+        <input type="text" id="layar" readonly>
 
-        <button class="angka" onclick="inputAngka('7')">7</button>
-        <button class="angka" onclick="inputAngka('8')">8</button>
-        <button class="angka" onclick="inputAngka('9')">9</button>
-        <button class="operator" onclick="inputAngka('-')">−</button>
+        <div class="tombol">
+            <button class="clear" onclick="clearLayar()">C</button>
+            <button class="del" onclick="hapusSatu()">DEL</button>
+            <button class="operator" onclick="inputAngka('/')">÷</button>
+            <button class="operator" onclick="inputAngka('*')">×</button>
 
-        <button class="angka" onclick="inputAngka('4')">4</button>
-        <button class="angka" onclick="inputAngka('5')">5</button>
-        <button class="angka" onclick="inputAngka('6')">6</button>
-        <button class="operator" onclick="inputAngka('+')">+</button>
+            <button class="angka" onclick="inputAngka('7')">7</button>
+            <button class="angka" onclick="inputAngka('8')">8</button>
+            <button class="angka" onclick="inputAngka('9')">9</button>
+            <button class="operator" onclick="inputAngka('-')">−</button>
 
-        <button class="angka" onclick="inputAngka('1')">1</button>
-        <button class="angka" onclick="inputAngka('2')">2</button>
-        <button class="angka" onclick="inputAngka('3')">3</button>
-        <button class="angka" onclick="inputAngka('.')">.</button>
+            <button class="angka" onclick="inputAngka('4')">4</button>
+            <button class="angka" onclick="inputAngka('5')">5</button>
+            <button class="angka" onclick="inputAngka('6')">6</button>
+            <button class="operator" onclick="inputAngka('+')">+</button>
 
-        <button class="angka" onclick="inputAngka('0')">0</button>
-        <button class="equal" onclick="hitung()">=</button>
+            <button class="angka" onclick="inputAngka('1')">1</button>
+            <button class="angka" onclick="inputAngka('2')">2</button>
+            <button class="angka" onclick="inputAngka('3')">3</button>
+            <button class="angka" onclick="inputAngka('.')">.</button>
+
+            <button class="angka" onclick="inputAngka('0')">0</button>
+            <button class="equal" onclick="hitung()">=</button>
+        </div>
     </div>
+
+    <!-- History -->
+    <div class="history">
+        <h3>History</h3>
+        <div id="listHistory"></div>
+    </div>
+
 </div>
 
 <script>
@@ -131,12 +147,27 @@ function hapusSatu() {
 }
 
 function hitung() {
+    let layar = document.getElementById("layar");
     try {
-        let hasil = eval(document.getElementById("layar").value);
-        document.getElementById("layar").value = hasil;
+        let ekspresi = layar.value;
+        let hasil = eval(ekspresi);
+
+        // tampilkan hasil
+        layar.value = hasil;
+
+        // simpan ke history
+        tambahHistory(ekspresi + " = " + hasil);
+
     } catch {
         alert("Input tidak valid!");
     }
+}
+
+function tambahHistory(teks) {
+    let history = document.getElementById("listHistory");
+    let item = document.createElement("p");
+    item.textContent = teks;
+    history.prepend(item); // yang terbaru di atas
 }
 </script>
 
