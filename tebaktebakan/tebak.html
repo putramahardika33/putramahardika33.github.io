@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pixel Tebak Kata</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: url('bg.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.4);
+    min-height: 100vh;
+    text-align: center;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    color: white;
+}
+
+.box {
+    background: rgba(0,0,0,0.7);
+    border: 4px solid white;
+    padding: 10px;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    width: 450px;
+    margin: 60px auto;
+    padding: 30px;
+    border: 6px solid black;
+}
+
+.clue {
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+
+.word {
+    font-size: 18px;
+    letter-spacing: 10px;
+    margin: 20px 0;
+}
+
+input {
+    padding: 12px;
+    width: 90%;
+    border: 3px solid black;
+    font-family: inherit;
+}
+
+button {
+    padding: 12px;
+    width: 100%;
+    border: 3px solid black;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.tebak { background: #6c5ce7; color: white; }
+.hint { background: orange; }
+
+.title {
+    color: white;
+    margin-top: 20px;
+}
+
+/* 🔥 NOTIF PIXEL */
+.notif {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: black;
+    color: white;
+    padding: 15px 25px;
+    border: 4px solid white;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.notif.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.notif.benar { border-color: #00ff88; }
+.notif.salah { border-color: red; }
+.notif.info { border-color: orange; }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="hud">
+        <div class="box">⭐ Skor: <span id="skor">0</span></div>
+        <div class="box">❤️ Nyawa: <span id="nyawa">3</span></div>
+    </div>
+
+    <h3 class="title">TEBAK KATA PIXEL</h3>
+
+    <div class="card">
+        <div class="clue" id="clue">Petunjuk: -</div>
+        <div class="word" id="word"></div>
+
+        <input type="text" id="input" placeholder="ketik huruf / kata">
+
+        <button class="tebak" onclick="cek()">TEBAK</button>
+        <button class="hint" onclick="hint()">💡 BUKA HURUF (-1 ❤️)</button>
+    </div>
+
+</div>
+
+<div id="notif" class="notif"></div>
+
+<script>
+const soal = [
+    { jawaban: "NASI GORENG", clue: "Makanan khas Indonesia digoreng dengan bumbu" },
+    { jawaban: "MIE AYAM", clue: "Mie dengan topping ayam manis gurih" },
+    { jawaban: "BAKSO", clue: "Bola daging dalam kuah" },
+    { jawaban: "SATE", clue: "Daging ditusuk lalu dibakar" },
+    { jawaban: "RENDANG", clue: "Masakan daging khas Padang" },
+    { jawaban: "GADO GADO", clue: "Sayur dengan saus kacang" },
+    { jawaban: "SOTO", clue: "Sup khas Indonesia dengan kunyit" },
+    { jawaban: "PECEL", clue: "Sayur dengan sambal kacang khas Jawa" },
+    { jawaban: "AYAM GORENG", clue: "Ayam dimasak dengan cara digoreng" },
+    { jawaban: "AYAM BAKAR", clue: "Ayam dimasak dengan cara dibakar" },
+    { jawaban: "TEMPE", clue: "Olahan kedelai yang difermentasi" },
+    { jawaban: "TAHU", clue: "Olahan kedelai berwarna putih" },
+    { jawaban: "MARTABAK", clue: "Makanan manis atau telur yang dilipat" },
+    { jawaban: "PISANG GORENG", clue: "Buah digoreng dengan tepung" },
+    { jawaban: "KETOPRAK", clue: "Makanan dengan lontong dan saus kacang" },
+    { jawaban: "LONTONG", clue: "Nasi dibungkus daun pisang" },
+    { jawaban: "RAWON", clue: "Sup daging berwarna hitam khas Jawa Timur" },
+    { jawaban: "SOP", clue: "Sup dengan sayur dan daging" },
+    { jawaban: "IKAN BAKAR", clue: "Ikan yang dimasak di atas bara api" },
+    { jawaban: "UDANG GORENG", clue: "Seafood digoreng renyah" },
+    { jawaban: "TELUR DADAR", clue: "Telur yang digoreng tanpa kulit" },
+    { jawaban: "NASI KUNING", clue: "Nasi berwarna kuning dengan santan" },
+    { jawaban: "BURGER", clue: "Roti isi daging khas Barat" },
+    { jawaban: "PIZZA", clue: "Makanan Italia berbentuk bulat dengan topping" },
+    { jawaban: "SPAGHETTI", clue: "Pasta panjang dari Italia" }
+];
+
+let current = {};
+let skor = 0;
+let nyawa = 3;
+let terbuka = [];
+
+/* NOTIF */
+function notif(pesan, tipe="info") {
+    let n = document.getElementById("notif");
+    n.innerText = pesan;
+    n.className = "notif show " + tipe;
+
+    setTimeout(() => {
+        n.classList.remove("show");
+    }, 2000);
+}
+
+function normal(teks) {
+    return teks.toLowerCase().trim();
+}
+
+function mulai() {
+    current = soal[Math.floor(Math.random() * soal.length)];
+    terbuka = [];
+
+    document.getElementById("clue").innerText =
+        "Petunjuk: " + current.clue;
+
+    tampilkan();
+}
+
+function tampilkan() {
+    let teks = "";
+
+    for (let i = 0; i < current.jawaban.length; i++) {
+        if (terbuka.includes(i)) {
+            teks += current.jawaban[i] + " ";
+        } else {
+            teks += "_ ";
+        }
+    }
+
+    document.getElementById("word").innerText = teks;
+
+    // 🔥 AUTO MENANG
+    if (terbuka.length === current.jawaban.length) {
+        skor += 10;
+        notif("🎉 Kata tertebak!", "benar");
+        setTimeout(mulai, 1000);
+    }
+}
+
+/* CEK */
+function cek() {
+    let input = document.getElementById("input").value.trim();
+    if (input === "") return;
+
+    // MODE HURUF
+    if (input.length === 1) {
+        let huruf = input.toUpperCase();
+        let ketemu = false;
+
+        for (let i = 0; i < current.jawaban.length; i++) {
+            if (current.jawaban[i] === huruf && !terbuka.includes(i)) {
+                terbuka.push(i);
+                ketemu = true;
+            }
+        }
+
+        if (!ketemu) {
+            nyawa--;
+            notif("❌ Huruf tidak ada! -1 ❤️", "salah");
+            update();
+        } else {
+            notif("✅ Huruf ditemukan!", "benar");
+        }
+
+        tampilkan();
+        document.getElementById("input").value = "";
+        return;
+    }
+
+    // MODE KATA
+    if (normal(input) === normal(current.jawaban)) {
+        skor += 10;
+        notif("🎉 Benar! " + current.jawaban, "benar");
+        mulai();
+    } else {
+        nyawa--;
+        notif("❌ Salah!", "salah");
+    }
+
+    update();
+}
+
+/* HINT */
+function hint() {
+    if (nyawa <= 1) {
+        notif("⚠️ Nyawa tidak cukup!", "salah");
+        return;
+    }
+
+    let sisa = [];
+
+    for (let i = 0; i < current.jawaban.length; i++) {
+        if (!terbuka.includes(i)) {
+            sisa.push(i);
+        }
+    }
+
+    if (sisa.length > 0) {
+        let acak = sisa[Math.floor(Math.random() * sisa.length)];
+        terbuka.push(acak);
+        nyawa--;
+        notif("💡 Huruf terbuka!", "info");
+        tampilkan();
+        update();
+    }
+}
+
+function update() {
+    document.getElementById("skor").innerText = skor;
+    document.getElementById("nyawa").innerText = nyawa;
+    document.getElementById("input").value = "";
+
+    if (nyawa <= 0) {
+        notif("💀 Game Over!", "salah");
+        setTimeout(() => location.reload(), 1500);
+    }
+}
+
+document.getElementById("input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") cek();
+});
+
+mulai();
+</script>
+
+</body>
+</html>
