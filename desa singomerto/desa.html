@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Desa Singamerta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f5;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #8B4513;
+    }
+
+    .menu {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .menu a {
+      position: relative;
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: #8B4513;
+      transition: 0.3s;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .menu a {
+      color: #333;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: #8B4513;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url("desa\ singo.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #A0522D;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #6B3410;
+      transform: translateY(-3px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* SECTION */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      color: #8B4513;
+    }
+
+    .section-title p {
+      color: #666;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    /* SEJARAH */
+    .history {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 50px;
+      align-items: center;
+    }
+
+    .history-image img {
+      border-radius: 25px;
+      height: 450px;
+      object-fit: cover;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .history-text h3 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .history-text p {
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    /* LAYANAN */
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #f4f7f5;
+      padding: 35px;
+      border-radius: 24px;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card h3 {
+      margin: 20px 0 15px;
+      font-size: 24px;
+      color: #8B4513;
+    }
+
+    .service-card p {
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: #A0522D;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    /* KONTAK */
+    .contact {
+      background: linear-gradient(135deg,#8B4513,#A0522D);
+      color: white;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact-info h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      line-height: 1.9;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .contact-card {
+      background: white;
+      color: #222;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 25px;
+      color: #8B4513;
+      font-size: 30px;
+    }
+
+    .contact-item {
+      margin-bottom: 20px;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #8B4513;
+    }
+
+    /* GALERI */
+    .gallery {
+      background: #eef4ef;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 25px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 24px;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .gallery-item img {
+      height: 280px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: white;
+    }
+
+    .gallery-text h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .gallery-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* PETA */
+    .map-section {
+      background: white;
+    }
+
+    .map-box {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      margin-top: 40px;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    /* ORGANISASI */
+    .organization {
+      background: #f4f7f5;
+    }
+
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 25px;
+    }
+
+    .org-card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .org-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .org-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: auto;
+      margin-bottom: 18px;
+      object-fit: cover;
+    }
+
+    .org-card h3 {
+      color: #8B4513;
+      margin-bottom: 8px;
+    }
+
+    .org-card p {
+      color: #666;
+    }
+
+    /* STATISTIK */
+    .stats {
+      background: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
+    }
+
+    .stats-card {
+      background: #f4f7f5;
+      padding: 35px;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .stats-card h3 {
+      color: #8B4513;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .stats-card ul {
+      list-style: none;
+    }
+
+    .stats-card li {
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+      color: #555;
+    }
+
+    /* UMKM */
+    .umkm {
+      background: #eef4ef;
+    }
+
+    .umkm-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
+    }
+
+    .umkm-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .umkm-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .umkm-card img {
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .umkm-content {
+      padding: 25px;
+    }
+
+    .umkm-content h3 {
+      color: #8B4513;
+      margin-bottom: 12px;
+    }
+
+    .umkm-content p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .history,
+      .contact-box,
+      .service-grid,
+      .gallery-grid,
+      .org-grid,
+      .stats-grid,
+      .umkm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .org-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .service-grid,
+      .gallery-grid,
+      .umkm-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav {
+        padding: 8px 0;
+      }
+
+      .menu {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .menu a {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 75vh;
+        text-align: center;
+        padding: 120px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+
+      .history-text h3 {
+        font-size: 28px;
+      }
+
+      .contact-info h2 {
+        font-size: 34px;
+      }
+
+      .contact-card {
+        padding: 28px;
+      }
+
+      .service-card,
+      .stats-card,
+      .org-card,
+      .umkm-content {
+        padding: 24px;
+      }
+
+      .gallery-item img,
+      .umkm-card img {
+        height: 220px;
+      }
+
+      .map-box iframe {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 92%;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .history-text h3,
+      .contact-info h2 {
+        font-size: 26px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .gallery-grid,
+      .service-grid,
+      .org-grid,
+      .stats-grid,
+      .umkm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .history-image img {
+        height: 280px;
+      }
+
+      .gallery-item img,
+      .umkm-card img {
+        height: 200px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .contact-card h3,
+      .stats-card h3,
+      .service-card h3 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container nav-content">
+      <div class="logo">Desa Singamerta</div>
+
+      <div class="menu">
+        <a href="#home">Beranda</a>
+        <a href="#sejarah">Sejarah</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#organisasi">Organisasi</a>
+        <a href="#statistik">Statistik</a>
+        <a href="#umkm">UMKM</a>
+        <a href="#peta">Peta</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h1>Selamat Datang di Website Desa Singamerta</h1>
+
+      <p>
+        Desa Singamerta merupakan desa di Kecamatan Sigaluh, Kabupaten Banjarnegara yang memiliki suasana pedesaan asri, budaya yang masih terjaga, dan masyarakat yang menjunjung tinggi gotong royong.
+      </p>
+
+      <a href="#layanan" class="btn btn-primary">Lihat Layanan</a>
+    </div>
+  </section>
+
+  <!-- SEJARAH -->
+  <section id="sejarah">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Sejarah Desa</h2>
+        <p>
+          Mengenal profil dan perkembangan Desa Singamerta, Kecamatan Sigaluh, Banjarnegara.
+        </p>
+      </div>
+
+      <div class="history">
+
+        <div class="history-image">
+          <img src="desa singomerto.png" alt="Desa">
+        </div>
+
+        <div class="history-text">
+          <h3>Profil Desa Singamerta</h3>
+
+          <p>
+            Desa Singamerta terletak di Kecamatan Sigaluh, Kabupaten Banjarnegara, Jawa Tengah. Desa ini dikenal memiliki lingkungan yang sejuk, wilayah pertanian yang luas, dan masyarakat yang aktif dalam kegiatan sosial.
+          </p>
+
+          <p>
+            Mayoritas masyarakat Desa Singamerta bekerja di bidang pertanian, perdagangan, dan usaha mandiri. Seiring perkembangan zaman, desa ini mulai mengembangkan pelayanan masyarakat berbasis digital.
+          </p>
+
+          <p>
+            Selain memiliki potensi alam yang indah, Desa Singamerta juga terus menjaga nilai budaya, kebersamaan, dan tradisi masyarakat lokal.
+          </p>
+          <p>
+            Visi Desa
+
+“Terwujudnya Desa Singomerto yang maju, mandiri, sejahtera, dan berbudaya melalui pembangunan yang merata dan pelayanan masyarakat yang baik.”
+          </p>
+          <P>
+            Menurut cerita yang berkembang di masyarakat Desa Singomerto, nama desa ini berasal dari dua tokoh pembuka wilayah yang bernama **Singo** dan **Merta**. Keduanya dikenal sebagai orang yang pertama kali membuka hutan, membangun permukiman, serta mengajak masyarakat bercocok tanam di daerah tersebut.
+
+Karena jasa mereka yang besar dalam membangun dan memakmurkan wilayah, nama kedua tokoh itu kemudian digabung menjadi **SingoMerta**. Seiring berjalannya waktu, penyebutannya berubah dalam logat masyarakat menjadi **Singomerto** atau **Singamerta** seperti yang dikenal sekarang.
+
+Makna nama tersebut juga dipercaya melambangkan:<br>
+
+* **Singo** = keberanian dan kekuatan<br>
+* **Merta/Merto** = kemakmuran dan kesejahteraan<br>
+
+Jadi, Desa Singomerto memiliki arti sebagai desa yang dibangun dengan semangat keberanian untuk mencapai kehidupan yang makmur dan tenteram.
+          </P>
+          <p>
+            Asal Usul Infrastruktur (1904-1907): Desa ini menjadi sangat penting dalam sejarah irigasi karena adanya proyek Singomerto Leiding (Saluran Irigasi Singomerto). Saluran irigasi pertama yang dibangun di aliran Sungai Serayu ini direncanakan pada tahun 1904 dan mulai dikerjakan pada 1906–1907. Proyek ini memakan dana 12.000 gulden dan berfungsi mengairi ribuan hektar area pertanian di selatan Sungai Serayu.
+          </p>
+          <P>
+Misi Desa<br>
+1.Meningkatkan kualitas pelayanan kepada masyarakat.<br>
+2.Mengembangkan potensi pertanian dan UMKM desa.<br>
+3.Meningkatkan pembangunan infrastruktur desa.<br>
+4.Meningkatkan kualitas pendidikan dan kesehatan masyarakat.<br>
+5.Menjaga keamanan, ketertiban, dan budaya gotong royong.<br>
+6.Meningkatkan transparansi dan tata kelola pemerintahan desa.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section class="services" id="layanan">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Layanan Desa</h2>
+        <p>
+          Beberapa layanan yang tersedia untuk masyarakat Desa Singamerta.
+        </p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="icon">1</div>
+          <h3>Administrasi Surat</h3>
+          <p>
+            Pelayanan pembuatan surat domisili, surat usaha, surat pengantar, dan administrasi lainnya.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">2</div>
+          <h3>Informasi Bantuan</h3>
+          <p>
+            Masyarakat dapat memperoleh informasi terkait bantuan sosial dan program desa terbaru.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">3</div>
+          <h3>Pengaduan Warga</h3>
+          <p>
+            Menyediakan layanan pengaduan masyarakat untuk menjaga kenyamanan dan keamanan desa.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section class="gallery" id="galeri">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Galeri Desa</h2>
+        <p>
+          Dokumentasi kegiatan dan keindahan lingkungan Desa Singamerta.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <img src="pemandangan.jpg" alt="Pemandangan Desa">
+p
+          <div class="gallery-text">
+            <h3>Pemandangan Alam</h3>
+            <p>Keindahan alam hijau yang asri dan sungai yang mengalir.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="solat id.png" alt="Sholat Idul Fitri Desa Singamerta 1447 H / 2026 M ">
+
+          <div class="gallery-text">
+            <h3>Sholat Idul Fitri Desa Singamerta 1447 H / 2026 M</h3>
+            <p>Pelaksanaan sholat Idul Fitri di Desa Singamerta tahun ini bukan hanya sekadar ritual ibadah, tetapi juga menjadi wadah memperkuat solidaritas sosial.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="musyawarah.png" alt="Musyawarah Desa">
+
+          <div class="gallery-text">
+            <h3>Musyawarah Desa Singamerta Tetapkan Besaran Zakat Fitrah ,sholat id dan Pengurus UPZ 2026</h3>
+            <p>Dalam rapat tersebut disepakati bahwa pelaksanaan sholat Idul Fitri di Desa Singamerta akan dilaksanakan di dua lokasi, yaitu di Dusun Karanganyar bertempat di Masjid Al Hikmah dan di lokasi Gudang Pusri..</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ORGANISASI -->
+  <section class="organization" id="organisasi">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Struktur Organisasi</h2>
+        <p>
+          Susunan perangkat dan pengurus Desa Singamerta.
+        </p>
+      </div>
+
+      <div class="org-grid">
+
+        <div class="org-card">
+          <img class="org-photo" src="profil laki laki.jpg" alt="Kepala Desa">
+          <h3>Widarko</h3>
+          <p>Kepala Desa</p>
+        </div>
+
+        <div class="org-card">
+          <img class="org-photo" src="profil perempuan.jpg" alt="Sekretaris Desa">
+          <h3>Siti Rahma</h3>
+          <p>Sekretaris Desa</p>
+        </div>
+
+        <div class="org-card">
+          <img class="org-photo" src="profil laki laki.jpg" alt="Bendahara">
+          <h3>Joko</h3>
+          <p>Bendahara</p>
+        </div>
+
+        <div class="org-card">
+          <img class="org-photo" src="profil perempuan.jpg" alt="Staff Desa">
+          <h3>Desi</h3>
+          <p>Staff Pelayanan</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIK -->
+  <!-- STATISTIK -->
+<section class="stats" id="statistik">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Statistik Penduduk</h2>
+      <p>
+        Informasi umum Desa Singamerta, Kecamatan Sigaluh, Kabupaten Banjarnegara.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stats-card">
+        <h3>Data Penduduk</h3>
+        <ul>
+          <li>Jumlah Penduduk : 2.944 Jiwa</li>
+          <li>Kepadatan Penduduk : 30 Jiwa/km²</li>
+          <li>Kecamatan : Sigaluh</li>
+          <li>Kabupaten : Banjarnegara</li>
+        </ul>
+      </div>
+
+      <div class="stats-card">
+        <h3>Informasi Wilayah</h3>
+        <ul>
+          <li>Provinsi : Jawa Tengah</li>
+          <li>Status Desa : Desa Administratif</li>
+          <li>Lingkungan : Pedesaan</li>
+          <li>Potensi Utama : Pertanian</li>
+        </ul>
+      </div>
+
+      <div class="stats-card">
+        <h3>Keterangan Tambahan</h3>
+        <ul>
+          <li>Masyarakat aktif dalam gotong royong</li>
+          <li>Mayoritas bekerja di sektor pertanian</li>
+          <li>Memiliki potensi UMKM lokal</li>
+          <li>Pelayanan desa mulai berbasis digital</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- UMKM -->
+  <section class="umkm" id="umkm">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Informasi UMKM</h2>
+        <p>
+          Produk dan usaha masyarakat Desa Singamerta yang membantu perekonomian warga.
+        </p>
+      </div>
+
+      <div class="umkm-grid">
+
+        <div class="umkm-card">
+          <img src="keripik.jpg" alt="UMKM">
+
+          <div class="umkm-content">
+            <h3>Keripik Singkong</h3>
+            <p>
+              Usaha makanan ringan khas rumahan yang diproduksi oleh warga Desa Singamerta.
+            </p>
+          </div>
+        </div>
+
+        <div class="umkm-card">
+          <img src="mutu.jpg" alt="UMKM">
+
+          <div class="umkm-content">
+            <h3>Kerajinan Batu/Mutu</h3>
+            <p>
+              Kerajinan lokal hasil karya masyarakat yang dipasarkan di sekitar Banjarnegara.
+            </p>
+          </div>
+        </div>
+
+        <div class="umkm-card">
+          <img src="pasir.jpg" alt="UMKM">
+
+          <div class="umkm-content">
+            <h3>UMKM Tambang Pasir</h3>
+            <p>
+              Hasil tambang pasir masyarakat menjadi salah satu sumber ekonomi sampingan warga desa.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PETA -->
+  <section class="map-section" id="peta">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Peta Desa</h2>
+        <p>
+          Lokasi Desa Singamerta, Kecamatan Sigaluh, Kabupaten Banjarnegara.
+        </p>
+      </div>
+
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1158.120282481486!2d109.74073287204028!3d-7.391327070247364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa895d4194e9f%3A0x373066b356d8b5b5!2sKantor%20Balai%20Desa%20Singamerta!5e0!3m2!1sid!2sid!4v1779598865934!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section class="contact" id="kontak">
+    <div class="container contact-box">
+
+      <div class="contact-info">
+        <h2>Hubungi Pihak Desa</h2>
+
+        <p>
+          Jika Anda membutuhkan bantuan atau informasi lebih lanjut, silakan hubungi pihak desa melalui kontak berikut.
+        </p>
+
+        <p>
+          Pelayanan tersedia setiap hari kerja pukul 08.00 - 16.00 WIB.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Kontak Resmi</h3>
+
+        <div class="contact-item">
+          <strong>Kepala Desa</strong>
+          <span>Bapak Widarko</span>
+        </div>
+
+        <div class="contact-item">
+          <strong>Nomor Telepon</strong>
+          <span>0812-3456-7890</span>
+        </div>
+
+        <div class="contact-item">
+          <strong>Web</strong>
+          <span>singamerta-banjarnegara.desa.id</span>
+        </div>
+
+        <div class="contact-item">
+          <strong>Alamat</strong>
+          <span>Desa Singamerta, Kecamatan Sigaluh, Kabupaten Banjarnegara, Jawa Tengah</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Website Resmi Desa Singamerta, Sigaluh - Banjarnegara
+  </footer>
+
+</body>
+</html>
