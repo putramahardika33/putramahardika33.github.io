@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Portfolio | Gerend Putra Mahardika</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id="loader">
+      <div class="loader-circle"></div>
+
+      <h2>Loading Portfolio...</h2>
+    </div>
+
+    <div id="progressBar"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top glass">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-white" href="#">DithzzCV</a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#hero">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#pendidikan">Pendidikan</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#organisasi">Organisasi</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#prestasi">Prestasi</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#kemampuan">Kemampuan</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#portofolio">Portofolio</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="btn btn-primary rounded-pill px-4 ms-lg-3"
+                href="#kontak"
+              >
+                Kontak
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header id="hero">
+      <div class="container">
+        <div class="row align-items-center min-vh-100">
+          <div class="col-lg-6">
+            <span class="badge bg-primary mb-3"> WELCOME TO MY PORTFOLIO </span>
+
+            <h1 id="typing"></h1>
+
+            <p>
+              Website ini berisi informasi lengkap mengenai diri saya, riwayat
+              pendidikan, pengalaman organisasi, kemampuan, portofolio, serta
+              kontak yang dapat dihubungi.
+            </p>
+
+            <a href="#tentang" class="btn btn-info btn-lg rounded-pill mt-3">
+              Jelajahi
+            </a>
+          </div>
+
+          <div class="col-lg-6 text-center">
+            <div class="hero-photo">
+              <img src="img/foto1.png" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="tentang">
+      <div class="container">
+        <h2 class="judul">Tentang Saya</h2>
+
+        <div class="content-box">
+          <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4">
+              <img
+                src="img/foto1.png"
+                class="about-photo img-fluid"
+                alt="Foto Profil"
+              />
+            </div>
+
+            <div class="col-lg-8">
+              <h3 class="mb-3">Gerend Putra Mahardika</h3>
+
+              <p>
+                Nama saya <b>Gerend Putra Mahardika</b>, saya adalah seorang
+                pelajar di bidang
+                <b>Rekayasa Perangkat Lunak (RPL)</b>
+                yang memiliki minat besar dalam dunia teknologi, khususnya
+                pengembangan website.
+              </p>
+
+              <p>
+                Saat ini saya sedang mempelajari berbagai dasar pemrograman
+                seperti
+                <b>HTML, CSS, Bootstrap</b>, serta mulai belajar
+                <b>PHP</b>
+                untuk membuat website yang dinamis.
+              </p>
+
+              <p>
+                Saya dikenal sebagai pribadi yang mudah tersenyum, humoris,
+                mampu bekerja sama dalam tim, serta selalu berusaha belajar
+                hal-hal baru di bidang teknologi.
+              </p>
+
+              <div class="row mt-5">
+                <div class="col-md-4 mb-3">
+                  <div class="mini-card">
+                    <h2 class="counter" data-target="3">0</h2>
+
+                    <span> Jenjang Pendidikan </span>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <div class="mini-card">
+                    <h2 class="counter" data-target="2">0</h2>
+
+                    <span> Pengalaman Organisasi </span>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <div class="mini-card">
+                    <h2 class="counter" data-target="3">0</h2>
+
+                    <span> Project Portofolio </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pendidikan">
+      <div class="container">
+        <h2 class="judul">Riwayat Pendidikan</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <h3>SMK Negeri 1 Bawang</h3>
+
+              <span class="tahun"> 2025 - Sekarang </span>
+
+              <p>Jurusan Rekayasa Perangkat Lunak (RPL)</p>
+
+              <a
+                href="https://maps.app.goo.gl/yPAntuyPPWT6HMjA7"
+                target="_blank"
+                class="btn btn-primary mt-3"
+              >
+                📍 Lihat Lokasi
+              </a>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <h3>SMP Negeri 5 Banjarnegara</h3>
+
+              <span class="tahun"> 2022 - 2025 </span>
+
+              <p>
+                Menempuh pendidikan tingkat SMP serta aktif mengikuti berbagai
+                kegiatan sekolah dan organisasi.
+              </p>
+
+              <a
+                href="https://maps.app.goo.gl/Hgr1MaMTEsjvBYXh8"
+                target="_blank"
+                class="btn btn-success mt-3"
+              >
+                📍 Lihat Lokasi
+              </a>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+              <h3>SD Negeri 1 Singamerta</h3>
+
+              <span class="tahun"> 2016 - 2022 </span>
+
+              <p>
+                Menyelesaikan pendidikan dasar dan mulai mengenal dunia
+                teknologi.
+              </p>
+
+              <a
+                href="https://maps.app.goo.gl/zFpH3vgwzF1Jiwh37"
+                target="_blank"
+                class="btn btn-warning mt-3"
+              >
+                📍 Lihat Lokasi
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organisasi">
+      <div class="container">
+        <h2 class="judul">Pengalaman Organisasi</h2>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="org-card">
+              <div class="org-icon">🏫</div>
+
+              <h3>OSIS SMP Negeri 5 Banjarnegara</h3>
+
+              <span class="org-year"> 2022/2023 - 2023/2024 </span>
+
+              <p>
+                Saya aktif dalam organisasi OSIS pada Seksi Bidang Ketertiban.
+                Melalui organisasi ini saya belajar mengenai kepemimpinan,
+                tanggung jawab, disiplin, komunikasi, dan kerja sama tim.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="org-card">
+              <div class="org-icon">🏕️</div>
+
+              <h3>Pramuka Garuda</h3>
+
+              <span class="org-year"> Pramuka Garuda </span>
+
+              <p>
+                Saya juga aktif dalam kegiatan Pramuka dan berhasil mencapai
+                tingkat Pramuka Garuda yang membentuk karakter disiplin,
+                mandiri, bertanggung jawab serta peduli terhadap lingkungan dan
+                masyarakat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prestasi">
+      <div class="container">
+        <h2 class="judul">Prestasi</h2>
+
+        <div class="prestasi-card">
+          <div class="prestasi-icon">🏆</div>
+
+          <h3>Masih Dalam Proses Berkembang</h3>
+
+          <p>
+            Saat ini saya masih terus belajar dan mengembangkan kemampuan baik
+            di bidang akademik maupun non-akademik. Saya percaya bahwa setiap
+            proses pembelajaran merupakan langkah menuju prestasi yang lebih
+            baik di masa depan.
+          </p>
+
+          <div class="note-box">
+            <b>Catatan</b>
+
+            <br /><br />
+
+            Saya terus berusaha meningkatkan kemampuan agar dapat memberikan
+            hasil terbaik dan meraih prestasi yang membanggakan.
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="kemampuan">
+      <div class="container">
+        <h2 class="judul">Kemampuan</h2>
+
+        <div class="row g-5">
+          <!-- HARD SKILL -->
+
+          <div class="col-lg-6">
+            <div class="skill-card">
+              <h3>💻 Hard Skill</h3>
+
+              <div class="skill-item">
+                <span>HTML</span>
+
+                <div class="progress">
+                  <div class="progress-bar skill-progress" data-width="90%">
+                    90%
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span>CSS</span>
+
+                <div class="progress">
+                  <div class="progress-bar skill-progress" data-width="85%">
+                    85%
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span>Bootstrap</span>
+
+                <div class="progress">
+                  <div class="progress-bar skill-progress" data-width="80%">
+                    80%
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span>Canva</span>
+
+                <div class="progress">
+                  <div class="progress-bar skill-progress" data-width="95%">
+                    95%
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span>Figma</span>
+
+                <div class="progress">
+                  <div class="progress-bar skill-progress" data-width="80%">
+                    80%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SOFT SKILL -->
+
+          <div class="col-lg-6">
+            <div class="skill-card">
+              <h3>🤝 Soft Skill</h3>
+
+              <ul class="skill-list">
+                <li>Komunikasi yang baik</li>
+
+                <li>Kerja sama tim</li>
+
+                <li>Disiplin dan tanggung jawab</li>
+
+                <li>Manajemen waktu</li>
+
+                <li>Mudah beradaptasi</li>
+
+                <li>Mau terus belajar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-12">
+            <div class="skill-desc">
+              <h3>Tentang Kemampuan Saya</h3>
+
+              <p>
+                Saya memiliki kemampuan dasar dalam pengembangan website
+                menggunakan HTML, CSS, dan Bootstrap. Selain itu saya juga mampu
+                membuat desain antarmuka menggunakan Canva maupun Figma.
+              </p>
+
+              <p>
+                Saya selalu berusaha mengembangkan kemampuan melalui latihan dan
+                berbagai proyek sederhana agar kemampuan saya semakin meningkat.
+              </p>
+
+              <p>
+                Selain kemampuan teknis, saya juga memiliki kemampuan
+                komunikasi, kerja sama tim, disiplin, dan tanggung jawab yang
+                membantu saya dalam menyelesaikan berbagai tugas maupun proyek
+                bersama.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portofolio">
+      <div class="container">
+        <h2 class="judul">Portofolio</h2>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="portfolio-card">
+              <img src="img/karya1.png" alt="" />
+
+              <div class="portfolio-content">
+                <h4>Website Kalkulator</h4>
+
+                <p>
+                  Website Kalkulator sederhana dengan penuh warna agar menarik perhatian.
+                </p>
+
+                <a
+                  href="https://putramahardika33.github.io/kalkulator/kalkulator.html"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  Lihat Project
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-card">
+              <img src="img/karya2.png" alt="" />
+
+              <div class="portfolio-content">
+                <h4>Websaid Tebak kata</h4>
+
+                <p>
+                 Waibset yang saya buat dengan beberapa partne kerja saya untuk membuat Wabsait ini
+                </p>
+
+                <a
+                  href="https://putramahardika33.github.io/tebaktebakan/tebak.html"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  Lihat Project
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-card">
+              <img src="img/karya3.png" alt="" />
+
+              <div class="portfolio-content">
+                <h4>Wabset Desa </h4>
+
+                <p>
+                  Wabsait desa yang saya kembangkan sediri dari desa saya dengan mengabil infomasi fakta
+                </p>
+
+                <a
+                  href="https://putramahardika33.github.io/desa%20singomerto/desa.html"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  Lihat Project
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <h2 class="judul">Hubungi Saya</h2>
+
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <div class="contact-card">
+              <h3>Informasi Kontak</h3>
+
+              <p>
+                📧 Email
+
+                <br />
+
+                <a href="mailto:gerendputamahardika@email.com">
+                  gerendputamahardika@email.com
+                </a>
+              </p>
+
+              <p>
+                📸 Instagram
+
+                <br />
+
+                <a href="https://www.instagram.com/gerndptra_" target="_blank">
+                  @gerndptra_
+                </a>
+              </p>
+
+              <p>
+                💻 Github
+
+                <br />
+
+                <a href="https://github.com/putramahardika33" target="_blank">
+                  putramahardika33
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-card">
+              <h3>Kirim Pesan</h3>
+
+              <form>
+                <input
+                  type="text"
+                  placeholder="Nama"
+                  class="form-control mb-3"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Email"
+                  class="form-control mb-3"
+                />
+
+                <textarea
+                  class="form-control mb-3"
+                  rows="6"
+                  placeholder="Pesan"
+                ></textarea>
+
+                <button class="btn btn-info">Kirim Pesan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container text-center">
+        <p>© 2026 Portfolio - Gerend Putra Mahardika</p>
+      </div>
+    </footer>
+
+    <button id="topBtn">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
